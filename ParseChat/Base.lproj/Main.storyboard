@@ -18,38 +18,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iAb-qE-dzz">
-                                <frame key="frameInset" minX="175" minY="184" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="799-g5-xYl">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="799-g5-xYl">
-                                <frame key="frameInset" minX="105" minY="222" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNa-aX-nOL">
-                                <frame key="frameInset" minX="168" minY="294" width="38" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNa-aX-nOL">
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tCV-R0-D4x"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M05-qQ-iPU">
-                                <frame key="frameInset" minX="161" minY="339" width="52" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M05-qQ-iPU">
                                 <state key="normal" title="Sign up"/>
                                 <connections>
                                     <action selector="onSignUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4i5-0G-hRJ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iAb-qE-dzz">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="iAb-qE-dzz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1qy-Jx-img"/>
+                            <constraint firstItem="yNa-aX-nOL" firstAttribute="top" secondItem="799-g5-xYl" secondAttribute="bottom" constant="8" id="7bh-XX-Q7n"/>
+                            <constraint firstItem="799-g5-xYl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="NA5-lS-3hv"/>
+                            <constraint firstItem="yNa-aX-nOL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S2v-6l-M6T"/>
+                            <constraint firstItem="iAb-qE-dzz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="gda-fA-Ra0"/>
+                            <constraint firstItem="M05-qQ-iPU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mOf-nc-4ti"/>
+                            <constraint firstItem="M05-qQ-iPU" firstAttribute="top" secondItem="yNa-aX-nOL" secondAttribute="bottom" constant="8" id="nDM-96-a9j"/>
+                            <constraint firstAttribute="trailing" secondItem="iAb-qE-dzz" secondAttribute="trailing" constant="8" id="sKX-Sl-bS2"/>
+                            <constraint firstAttribute="trailing" secondItem="799-g5-xYl" secondAttribute="trailing" constant="8" id="tfN-45-F4J"/>
+                            <constraint firstItem="iAb-qE-dzz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tnA-tb-23c"/>
+                            <constraint firstItem="799-g5-xYl" firstAttribute="top" secondItem="iAb-qE-dzz" secondAttribute="bottom" constant="8" id="yWs-gp-JwE"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="iAb-qE-dzz" id="KBO-gC-XsU"/>
