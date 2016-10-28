@@ -9,13 +9,21 @@
 import UIKit
 import Parse
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var messageTextField: UITextField!
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var messages: [PFObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ChatViewController.getParseMessages), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +47,21 @@ class ChatViewController: UIViewController {
         
         
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
+        cell.textLabel?.numberOfLines = 0
+        let message = self.messages[indexPath.row] as PFObject
+        print(message)
+            cell.textLabel?.text = message.object(forKey: "text") as? String
+        
+        cell.textLabel?.sizeToFit()
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messages.count
+    }
 
     /*
     // MARK: - Navigation
@@ -49,5 +72,29 @@ class ChatViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func getParseMessages() {
+        
+        let query = PFQuery(className:"MessageSF")
+        query.order(byDescending: "createdAt")
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) messages.")
+                // Do something with the found objects
+                if let objects = objects {
+                    self.messages = objects
+                    self.tableView.reloadData()
+                    /*for object in objects {
+                        //print(object.object(forKey: "text"))
+                    }*/
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error)")
+            }
+        }
 
+    }
 }
