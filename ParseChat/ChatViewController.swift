@@ -68,8 +68,17 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         if message.object(forKey: "imageUrl") != nil {
-            let url = URL(string: message.object(forKey: "imageUrl") as! String)
-            cell.messageImage.setImageWith(url!)
+            let imageRequest = NSURLRequest(url: URL(string: message.object(forKey: "imageUrl") as! String)!)
+            
+            cell.messageImage.setImageWith(imageRequest as URLRequest, placeholderImage: nil, success: { (imageRequest, imageResponse, image) -> Void in
+                // imageResponse will be nil if the image is cached
+                if imageResponse != nil {
+                    cell.messageImage.image = image
+                }
+                }, failure: { (imageRequest, imageResponse, error) -> Void in
+                    print("Error: \(error.localizedDescription)")
+                }
+            )
         }
         
         cell.message.sizeToFit()
