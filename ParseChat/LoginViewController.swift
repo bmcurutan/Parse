@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
             PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!) { (user, error) -> Void in
                 if error == nil {
                     print("succesful")
+                    self.loginSuccess()
                 } else {
                     //print("error: \(error!.userInfo!)")
                     print("error: \(error)")
@@ -42,11 +43,11 @@ class LoginViewController: UIViewController {
 
     @IBAction func onSignUpButton(_ sender: AnyObject) {
         let user = PFUser()
-        user.username = "myUsername"
-        user.password = "myPassword"
-        user.email = "email@example.com"
-        // other fields can be set just like with PFObject
-        user["phone"] = "415-392-0202"
+        user.username = self.emailTextField.text
+        user.password = self.passwordTextField.text
+        user.email = self.emailTextField.text
+//        // other fields can be set just like with PFObject
+//        user["phone"] = "415-392-0202"
         
         user.signUpInBackground {
             (succeeded: Bool, error: Error?) -> Void in
@@ -57,6 +58,8 @@ class LoginViewController: UIViewController {
                 // Show the errorString somewhere and let the user try again.
             } else {
                 // Hooray! Let them use the app now.
+                print("signed up!")
+                self.loginSuccess()
             }
         }
     }
@@ -84,5 +87,10 @@ class LoginViewController: UIViewController {
         // optional code for what happens after the alert controller has finished presenting
         }
     }
+    
+    func loginSuccess() {
+        self.performSegue(withIdentifier: "loginSuccess", sender: self)
+    }
+    
 }
 
