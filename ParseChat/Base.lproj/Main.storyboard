@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -112,12 +112,19 @@
                                     <constraint firstItem="CPK-7e-J4p" firstAttribute="top" secondItem="Vpg-EI-Va4" secondAttribute="top" constant="23" id="pYk-Q8-FEc"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IvE-ic-xPA">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Vpg-EI-Va4" firstAttribute="leading" secondItem="gJy-mZ-Yof" secondAttribute="leading" id="7cx-Ln-gqy"/>
+                            <constraint firstAttribute="trailing" secondItem="IvE-ic-xPA" secondAttribute="trailing" id="MiI-5P-xJI"/>
                             <constraint firstItem="Vpg-EI-Va4" firstAttribute="top" secondItem="dQD-rV-BMR" secondAttribute="bottom" id="NaR-f3-iSI"/>
                             <constraint firstAttribute="trailing" secondItem="Vpg-EI-Va4" secondAttribute="trailing" id="j1P-gH-JCY"/>
+                            <constraint firstItem="IvE-ic-xPA" firstAttribute="leading" secondItem="gJy-mZ-Yof" secondAttribute="leading" id="n1E-Wd-59o"/>
+                            <constraint firstItem="gLd-oV-1gx" firstAttribute="top" secondItem="IvE-ic-xPA" secondAttribute="bottom" id="tW7-ZS-2xm"/>
+                            <constraint firstItem="IvE-ic-xPA" firstAttribute="top" secondItem="Vpg-EI-Va4" secondAttribute="bottom" id="y8G-qZ-hHu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Chat" id="BJD-bL-7Vw"/>

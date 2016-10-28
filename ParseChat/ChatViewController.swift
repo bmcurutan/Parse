@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ChatViewController: UIViewController {
     @IBOutlet weak var messageTextField: UITextField!
@@ -23,13 +24,16 @@ class ChatViewController: UIViewController {
     }
     
     @IBAction func sendMessage(_ sender: AnyObject) {
-        var newMessage = PFObject(className: "MessageSF")
-        newMessage.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
+        let newMessage = PFObject(className: "MessageSF")
+        newMessage["text"] = self.messageTextField.text
+        newMessage.saveInBackground {
+            (success: Bool, error: Error?) -> Void in
             if (success) {
                 // The object has been saved.
+                print("sent message: \(newMessage)")
             } else {
                 // There was a problem, check error.description
+                print("error: \(error)")
             }
         }
         
