@@ -101,25 +101,36 @@
                                             <action selector="sendMessage:" destination="FNi-dy-6Hg" eventType="touchUpInside" id="R85-u9-IA4"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter image URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NMK-8o-9w5">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="276" id="nJi-l3-vjV"/>
+                                            <constraint firstAttribute="height" constant="30" id="w21-uo-cSB"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="NMK-8o-9w5" firstAttribute="top" secondItem="OF7-KP-CVR" secondAttribute="bottom" constant="8" id="6jv-12-fmm"/>
                                     <constraint firstItem="CPK-7e-J4p" firstAttribute="centerY" secondItem="OF7-KP-CVR" secondAttribute="centerY" id="9Df-Jd-Dus"/>
                                     <constraint firstItem="OF7-KP-CVR" firstAttribute="leading" secondItem="Vpg-EI-Va4" secondAttribute="leading" constant="15" id="LCh-lV-PNQ"/>
-                                    <constraint firstAttribute="height" constant="70" id="QiR-ks-tHA"/>
+                                    <constraint firstAttribute="height" constant="120" id="QiR-ks-tHA"/>
                                     <constraint firstItem="OF7-KP-CVR" firstAttribute="top" secondItem="Vpg-EI-Va4" secondAttribute="top" constant="23" id="db2-7d-U0x"/>
                                     <constraint firstAttribute="trailing" secondItem="CPK-7e-J4p" secondAttribute="trailing" constant="15" id="nwV-3d-baS"/>
                                     <constraint firstItem="CPK-7e-J4p" firstAttribute="top" secondItem="Vpg-EI-Va4" secondAttribute="top" constant="23" id="pYk-Q8-FEc"/>
+                                    <constraint firstItem="NMK-8o-9w5" firstAttribute="leading" secondItem="Vpg-EI-Va4" secondAttribute="leading" constant="8" id="zNB-9O-m0y"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IvE-ic-xPA">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="233" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IvE-ic-xPA">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" id="xdq-Zf-7w1" customClass="MessageCell" customModule="ParseChat" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageCell" rowHeight="233" id="xdq-Zf-7w1" customClass="MessageCell" customModule="ParseChat" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="233"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xdq-Zf-7w1" id="PIX-ng-6g6">
-                                            <frame key="frameInset" width="375" height="99"/>
+                                            <frame key="frameInset" width="375" height="232"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8x-wj-xaM">
@@ -138,17 +149,27 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XPm-JB-cHt">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="147" id="889-iA-50f"/>
+                                                        <constraint firstAttribute="width" constant="359" id="Etw-Ix-DAk"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="gDq-jt-Q24" firstAttribute="top" secondItem="O8x-wj-xaM" secondAttribute="bottom" constant="8" id="6HU-mD-tFI"/>
                                                 <constraint firstItem="gDq-jt-Q24" firstAttribute="leading" secondItem="PIX-ng-6g6" secondAttribute="leading" constant="8" id="IPR-ZC-fhq"/>
+                                                <constraint firstItem="XPm-JB-cHt" firstAttribute="leading" secondItem="PIX-ng-6g6" secondAttribute="leading" constant="8" id="Kez-RT-HXA"/>
                                                 <constraint firstItem="O8x-wj-xaM" firstAttribute="leading" secondItem="PIX-ng-6g6" secondAttribute="leading" constant="8" id="aZv-Gb-1um"/>
+                                                <constraint firstAttribute="trailing" secondItem="XPm-JB-cHt" secondAttribute="trailing" constant="8" id="h14-4K-hPy"/>
                                                 <constraint firstItem="O8x-wj-xaM" firstAttribute="top" secondItem="PIX-ng-6g6" secondAttribute="top" constant="8" id="k8f-Fj-k2w"/>
-                                                <constraint firstAttribute="bottom" secondItem="gDq-jt-Q24" secondAttribute="bottom" constant="8" id="kV8-XH-BzJ"/>
+                                                <constraint firstItem="XPm-JB-cHt" firstAttribute="top" secondItem="gDq-jt-Q24" secondAttribute="bottom" constant="8" id="mqE-iV-wZd"/>
+                                                <constraint firstAttribute="bottom" secondItem="XPm-JB-cHt" secondAttribute="bottom" constant="8" id="sfM-kK-Xnt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="message" destination="gDq-jt-Q24" id="MxD-sK-xyX"/>
+                                            <outlet property="messageImage" destination="XPm-JB-cHt" id="ReO-t0-lLM"/>
                                             <outlet property="messageSender" destination="O8x-wj-xaM" id="q7I-0l-uQx"/>
                                         </connections>
                                     </tableViewCell>
@@ -168,6 +189,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Chat" id="BJD-bL-7Vw"/>
                     <connections>
+                        <outlet property="imageUrlField" destination="NMK-8o-9w5" id="1pe-Hc-DBe"/>
                         <outlet property="messageTextField" destination="OF7-KP-CVR" id="Q5f-7K-bjX"/>
                         <outlet property="tableView" destination="IvE-ic-xPA" id="ybP-Go-E2D"/>
                     </connections>

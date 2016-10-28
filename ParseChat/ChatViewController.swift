@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 import Parse
 
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -14,13 +15,15 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var imageUrlField: UITextField!
+    
     var messages: [PFObject] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 100
+        tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableViewAutomaticDimension
         getParseMessages()
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ChatViewController.getParseMessages), userInfo: nil, repeats: true)
@@ -35,6 +38,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let newMessage = PFObject(className: "MessageSF")
         newMessage["user"] = PFUser.current()
         newMessage["text"] = self.messageTextField.text
+        newMessage["imageUrl"] = self.imageUrlField.text
         newMessage.saveInBackground {
             (success: Bool, error: Error?) -> Void in
             if (success) {
@@ -62,6 +66,12 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else {
             cell.messageSender.text = user?.email
         }
+        
+        if message.object(forKey: "imageUrl") != nil {
+            let url = URL(string: message.object(forKey: "imageUrl") as! String)
+            cell.messageImage.setImageWith(url!)
+        }
+        
         cell.message.sizeToFit()
         return cell
     }
@@ -69,7 +79,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
-
+    
     /*
     // MARK: - Navigation
 
