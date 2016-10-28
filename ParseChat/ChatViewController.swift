@@ -22,7 +22,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        getParseMessages()
         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(ChatViewController.getParseMessages), userInfo: nil, repeats: true)
     }
 
@@ -33,6 +33,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func sendMessage(_ sender: AnyObject) {
         let newMessage = PFObject(className: "MessageSF")
+        newMessage["user"] = PFUser.current()
         newMessage["text"] = self.messageTextField.text
         newMessage.saveInBackground {
             (success: Bool, error: Error?) -> Void in
@@ -49,13 +50,19 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-        cell.textLabel?.numberOfLines = 0
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
+        cell.message.numberOfLines = 0
         let message = self.messages[indexPath.row] as PFObject
         print(message)
-            cell.textLabel?.text = message.object(forKey: "text") as? String
-        
-        cell.textLabel?.sizeToFit()
+            cell.message.text = message.object(forKey: "text") as? String
+        let user = message.object(forKey: "user") as? PFUser
+        if (user?.username) != nil {
+            cell.messageSender.text = user?.username
+        }
+        else {
+            cell.messageSender.text = user?.email
+        }
+        cell.message.sizeToFit()
         return cell
     }
     
@@ -76,6 +83,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let query = PFQuery(className:"MessageSF")
         query.order(byDescending: "createdAt")
+        query.includeKey("user")
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             
