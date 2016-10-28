@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let alertController = UIAlertController(title: "Login Error", message: "Please try again", preferredStyle: .alert)
+    let alertController = UIAlertController(title: "Error", message: "Error", preferredStyle: .alert)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
                 } else {
                     //print("error: \(error!.userInfo!)")
                     print("error: \(error)")
-                    self.onError()
+                    self.onError("Login error. \(error?.localizedDescription)")
                 }
             }
         }
@@ -53,7 +53,7 @@ class LoginViewController: UIViewController {
             if let error = error {
                 // let errorString = error.userInfo["error"] as? NSString
                 print("error: \(error)")
-                self.onError()
+                self.onError("Sign up error. \(error.localizedDescription)")
                 // Show the errorString somewhere and let the user try again.
             } else {
                 // Hooray! Let them use the app now.
@@ -64,7 +64,9 @@ class LoginViewController: UIViewController {
     // MARK: - UIAlert
     
     // create a cancel action
-    func onError() {
+    func onError(_ message: String) {
+        alertController.message = message as String
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             // handle cancel response here. Doing nothing will dismiss the view.
         }
