@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    let alertController = UIAlertController(title: "Login Error", message: "Please try again", preferredStyle: .alert)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,6 +34,7 @@ class LoginViewController: UIViewController {
                 } else {
                     //print("error: \(error!.userInfo!)")
                     print("error: \(error)")
+                    self.onError()
                 }
             }
         }
@@ -50,10 +53,33 @@ class LoginViewController: UIViewController {
             if let error = error {
                 // let errorString = error.userInfo["error"] as? NSString
                 print("error: \(error)")
+                self.onError()
                 // Show the errorString somewhere and let the user try again.
             } else {
                 // Hooray! Let them use the app now.
             }
+        }
+    }
+    
+    // MARK: - UIAlert
+    
+    // create a cancel action
+    func onError() {
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // handle cancel response here. Doing nothing will dismiss the view.
+        }
+        // add the cancel action to the alertController
+        alertController.addAction(cancelAction)
+        
+        // create an OK action
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            // handle response here.
+        }
+        // add the OK action to the alert controller
+        alertController.addAction(OKAction)
+        
+        present(alertController, animated: true) {
+        // optional code for what happens after the alert controller has finished presenting
         }
     }
 }
